@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icoCalculator.png" type="image/x-icon">
+    <title>Calculator</title>
+    
+    <style>
+        
+        html,body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            background: linear-gradient(45deg, rgb(153, 59, 104), black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .tabela {
+            width: fit-content;
+            margin: 50px auto;
+            background-color:rgb(54,52,52);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 4px 10px rgb(0,0,0,0.7);
+            color: rgb(0,0,0);
+        }
+        .botoes {
+            background-color: rgb(54,52,52);
+            border: 2px solid rgb(54,52,52);
+        }
+        button:hover {
+            background-color: rgb(255,255,255);
+        }
+        .titulo {
+            font-family: Arial, Helvetica, sans-serif;
+            color: rgb(0,0,0);
+            text-align: center;
+        }
+        .função {
+            width: 50px;
+            height: 40px;
+            background-color:  rgb(54,52,52);
+            box-shadow: 5px 8px 8px rgba(0,0,0,0.5);
+            cursor: pointer;
+        }
+        .função2 {
+            height: 88px;
+            width: 50px;
+            background-color:  rgb(54,52,52);
+            box-shadow: 5px 8px 8px rgba(0,0,0,0.5);
+            cursor: pointer;
+        }
+        .função3 {
+            width: 105px;
+            height: 40px;
+            background-color:rgb(54,52,52);
+            box-shadow: 5px 8px 8px rgba(0,0,0,0.5);
+            cursor: pointer;
+        }
+        #resultado {
+            font-size: 25px;
+            width: 215px;
+            height: 30px;
+            background-color: rgb(47, 45, 45);
+            color: rgb(0, 0, 0);
+        }
+    
+    </style>
+</head>
+<body>
+    <div class = "tabela">
+        <div class = "titulo">
+            <h2>Calculator</h2>
+            <p id = "resultado"> </p>
+        </div>
+        
+        <div class = "botoes">
+            <table>
+                <tr>
+                    <td><button class = função onclick="clean()">C</button></td>
+                    <td><button class = função  onclick="back()"><</button></td>
+                    <td><button class = função  onclick="insert('*')">*</button></td>
+                    <td><button class = função  onclick="insert('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class = função  onclick="insert('7')">7</button></td>
+                    <td><button class = função  onclick="insert('8')">8</button></td>
+                    <td><button class = função  onclick="insert('9')">9</button></td>
+                    <td><button class = função  onclick="insert('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button class = função  onclick="insert('4')">4</button></td>
+                    <td><button class = função  onclick="insert('5')">5</button></td>
+                    <td><button class = função  onclick="insert('6')">6</button></td>
+                    <td><button class = função  onclick="insert('/')">/</button></td>
+                </tr>
+                <tr>
+                    <td><button class = função  onclick="insert('1')">1</button></td>
+                    <td><button class = função  onclick="insert('2')">2</button></td>
+                    <td><button class = função  onclick="insert('3')">3</button></td>
+                    <td rowspan="2"><button class = função2 onclick="calcular()"> = </button></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button class = função3 onclick="insert('0')">0</button></td>
+                    <td><button class = função onclick="insert('.')">.</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        function insert(num)
+         {
+
+           var numero =  document.getElementById("resultado").innerHTML;
+           document.getElementById("resultado").innerHTML = numero + num;
+        }
+        function clean() {
+            document.getElementById("resultado").innerHTML = "";
+        }
+        function back() {
+            var resultado = document.getElementById("resultado").innerHTML;
+            document.getElementById("resultado").innerHTML = resultado.substring(0 , resultado.length - 1);
+        }
+        function calcular() {
+            var resultado = document.getElementById("resultado").innerHTML;
+            if(resultado) {
+                document.getElementById("resultado").innerHTML = eval(resultado);
+            }
+            else {
+                document.getElementById("resultado").innerHTML = "0";
+            }
+        }
+        
+    </script>
+</body>
+</html>
 
